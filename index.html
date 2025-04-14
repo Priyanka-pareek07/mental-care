@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mental Health Care</title>
+  <link rel="stylesheet" href="css\style.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Mental<span>Care</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Welcome to Mental Care</h2>
+      <p>Empowering your emotional well-being through support, care, and self-awareness. At MentalCare, we believe that mental health matters. Our platform is dedicated to supporting individuals on their journey to emotional wellbeing through accessible tools, free resources, and expert guidance.</p>
+      <a href="login.html" class="btn">Get Started</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://img.freepik.com/free-vector/mental-health-concept-illustration_114360-2032.jpg" alt="Mental Health Care">
+    </div>
+  </section>
+
+  <section class="features">
+    <h3>Why Choose Us?</h3>
+    <div class="feature-grid">
+      <div class="feature-box">
+        <h4>Daily Mood Tracker</h4>
+        <p>Track your feelings and see your emotional trends over time.</p>
+      </div>
+      <div class="feature-box">
+        <h4>1-on-1 Counselling</h4>
+        <p>Connect with certified mental health professionals for personal support.</p>
+      </div>
+      <div class="feature-box">
+        <h4>24/7 Support</h4>
+        <p>You're never alone. We’re here whenever you need someone to talk to.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mood Tracker Popup -->
+<div class="mood-popup" id="moodPopup">
+  <div class="popup-content">
+    <h3>How are you feeling today?</h3>
+    <div class="emojis">
+      <span class="emoji" data-mood="Happy">😊</span>
+      <span class="emoji" data-mood="Sad">😢</span>
+      <span class="emoji" data-mood="Angry">😠</span>
+      <span class="emoji" data-mood="Stressed">😣</span>
+      <span class="emoji" data-mood="Excited">😄</span>
+    </div>
+    <div id="quote" class="quote-box"></div>
+    <div id="resources" class="resource-box"></div>
+    <canvas id="moodChart" width="300" height="150"></canvas>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+
+  <footer>
+    <p>&copy; 2025 MentalCare. All Rights Reserved.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const popup = document.getElementById("moodPopup");
+    const emojis = document.querySelectorAll(".emoji");
+    const quoteBox = document.getElementById("quote");
+    const resourceBox = document.getElementById("resources");
+  
+    const quotes = {
+      Happy: "Keep smiling! Happiness is contagious 😊",
+      Sad: "It's okay to feel down. This too shall pass 💙",
+      Angry: "Take a deep breath. You're stronger than you think 💪",
+      Stressed: "Relax your mind. Everything will be okay 🌿",
+      Excited: "Let your excitement fuel your day! 🔥"
+    };
+  
+    const resources = {
+      Happy: "🎵 Uplifting Playlist: <a href='https://www.youtube.com/watch?v=ZbZSe6N_BXs' target='_blank'>Listen Now</a>",
+      Sad: "🧘 Meditation Guide: <a href='https://www.youtube.com/watch?v=inpok4MKVLM' target='_blank'>Try this</a>",
+      Angry: "😌 Breathing Exercise: <a href='https://www.youtube.com/watch?v=SEfs5TJZ6Nk' target='_blank'>Watch Now</a>",
+      Stressed: "💡 Stress Relief Tips: <a href='https://www.helpguide.org/articles/stress/stress-management.htm' target='_blank'>Read</a>",
+      Excited: "🔥 Channel energy into goals: <a href='https://www.youtube.com/watch?v=mgmVOuLgFB0' target='_blank'>Motivation Video</a>"
+    };
+  
+    // Show popup on load (after login in future)
+    window.onload = () => {
+      popup.style.display = "flex";
+    };
+  
+    function closePopup() {
+      popup.style.display = "none";
+    }
+  
+    emojis.forEach(emoji => {
+      emoji.addEventListener("click", () => {
+        const mood = emoji.dataset.mood;
+        quoteBox.innerHTML = `<strong>Quote:</strong> ${quotes[mood]}`;
+        resourceBox.innerHTML = `<strong>Resources:</strong> ${resources[mood]}`;
+  
+        // Chart Data Sample
+       // Chart Data Sample with upgraded style
+const ctx = document.getElementById('moodChart').getContext('2d');
+
+// Destroy existing chart if already present
+if (window.moodChartInstance) {
+  window.moodChartInstance.destroy();
+}
+
+// Create gradient
+const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+gradient.addColorStop(0, '#3f8cff');
+gradient.addColorStop(1, '#a0c4ff');
+
+window.moodChartInstance = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Happy", "Sad", "Angry", "Stressed", "Excited"],
+    datasets: [{
+      label: "Mood History (example)",
+      data: [4, 2, 1, 3, 5],
+      backgroundColor: gradient,
+      borderRadius: 10, // rounded bars
+      borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#333',
+        titleColor: '#fff',
+        bodyColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#aaa'
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1
+        },
+        grid: {
+          color: '#ddd'
+        }
+      },
+      x: {
+        grid: {
+          display: false
+        }
+      }
+    }
+  }
+});
+
+  
+        // 💾 TODO: Later you will send mood to PHP/MySQL using fetch or AJAX
+      });
+    });
+  </script>
+  
+
+</body>
+</html>

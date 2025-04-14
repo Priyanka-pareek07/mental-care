@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Mental Health Care</title>
+  <link rel="stylesheet" href="css/about.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1 class="logo">Mental<span>Care</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="about-section">
+    <div class="container">
+      <div class="text-content">
+        <h2><i class="fas fa-heartbeat"></i>💜About Us- MentalCare</h2>
+       <p>You're not alone. You matter. And we’re glad you’re here. </p>
+       <p>
+        At MentalCare, we understand that life can feel overwhelming — and it's okay to not be okay.
+        Whether you're struggling with stress, anxiety, low mood, or just looking for peace of mind, you're not alone. We created this platform because we’ve been there too — the overthinking, sleepless nights, and pressure to appear “fine” when inside, you're not.
+        
+        
+       </p>
+       
+        <p>
+          We are dedicated to promoting mental wellness through education, tools, and access to professional resources.</p>
+        <p>Whether you're looking for stress relief, guidance, or a safe space, we are here for you.</p>
+        <p>MentalCare is built by students who wanted to make mental health support more accessible, simple, and real.
+        </p>
+      </div>
+      <div class="image-content">
+        <img src="https://plus.unsplash.com/premium_vector-1725549437728-b0018b441214?q=80&w=2360" alt="Mental Health Illustration" />
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <h3><i class="fas fa-quote-left"></i> Inspirational Quote</h3>
+    <div id="quote-box">"You don’t have to control your thoughts. You just have to stop letting them control you." — Dan Millman</div>
+  </section>
+
+  
+  <section class="tips-tools">
+    <h3><i class="fas fa-hand-holding-heart"></i> Stress Relief Tips & Tools</h3>
+    <div class="tips-grid">
+      <div class="tip-box">
+        <i class="fas fa-music"></i>
+        <h4>Listen to Calming Music</h4>
+        <p>Soothing music helps calm the mind and improve focus.</p>
+      </div>
+      <div class="tip-box">
+        <i class="fas fa-spa"></i>
+        <h4>Try Deep Breathing</h4>
+        <p>Take slow, deep breaths to reduce anxiety and clear your thoughts.</p>
+      </div>
+      <div class="tip-box">
+        <i class="fas fa-walking"></i>
+        <h4>Take a Mindful Walk</h4>
+        <p>Connect with nature and give yourself a peaceful break.</p>
+      </div>
+      <div class="tip-box">
+        <i class="fas fa-journal-whills"></i>
+        <h4>Journal Your Thoughts</h4>
+        <p>Writing down your emotions helps you process them better.</p>
+      </div>
+    </div>
+    
+  </section>
+    <section class="resources">
+      <h3><i class="fas fa-video"></i> Stress Relief & Mental Care Resources</h3>
+      <a href="https://www.youtube.com/watch?v=1vx8iUvfyCY" target="_blank">Watch Guided Meditation</a>
+    </section>
+    
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h3><i class="fas fa-question-circle"></i> Mental Health Tips (FAQs)</h3>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-button">How can I reduce daily stress?</button>
+        <div class="accordion-content">
+          Practice meditation, deep breathing, and take short breaks from screen time.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-button">What should I do when feeling overwhelmed?</button>
+        <div class="accordion-content">
+          Talk to someone you trust, write your feelings down, or take a mindful walk.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-button">Any quick mood boosters?</button>
+        <div class="accordion-content">
+          Listen to music, do light exercise, or try a short gratitude journaling session.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mental Health Care. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // FAQ Accordion Logic
+    const accordions = document.querySelectorAll(".accordion-button");
+    accordions.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const content = btn.nextElementSibling;
+        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+      });
+    });
+
+    // Quote Animation
+    const quotes = [
+      "You don’t have to control your thoughts. You just have to stop letting them control you.",
+      "Your mental health is a priority. Your happiness is essential. Your self-care is a necessity.",
+      "Healing takes time. Asking for help is a courageous step.",
+      "You are stronger than your struggle. Keep going!"
+    ];
+    let quoteIndex = 0;
+    setInterval(() => {
+      const quoteBox = document.getElementById("quote-box");
+      quoteBox.classList.remove("fade-in");
+      setTimeout(() => {
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+        quoteBox.textContent = `"${quotes[quoteIndex]}"`;
+        quoteBox.classList.add("fade-in");
+      }, 300);
+    }, 6000);
+  </script>
+</body>
+</html>
